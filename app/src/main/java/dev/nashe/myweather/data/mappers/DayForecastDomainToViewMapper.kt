@@ -25,6 +25,6 @@ class DayForecastDomainToViewMapper @Inject constructor(
             sunrise = domain.sunrise,
             sunset = domain.sunrise,
             temp = TempView(day = domain.temp.day,domain.temp.eve,domain.temp.max,domain.temp.min,domain.temp.morn,domain.temp.night),
-            weather = weatherDomainToViewMapper.mapToDomainList(domain.weather))
+            weather = weatherDomainToViewMapper.mapToViewList(domain.weather))
     }
 }

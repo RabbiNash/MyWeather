@@ -1,4 +1,4 @@
-package dev.nashe.myweather
+package dev.nashe.myweather.mapper
 
 import com.google.common.truth.Truth
 import dev.nashe.myweather.data.ViewDataStub

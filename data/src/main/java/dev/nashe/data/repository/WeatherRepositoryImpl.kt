@@ -15,10 +15,10 @@ class WeatherRepositoryImpl @Inject constructor(
     private val forecastEntityToDomainMapper: ForecastEntityToDomainMapper
 ) : WeatherRepository {
 
-    override suspend fun getForecast(city: String): Flow<List<Forecast>> {
+    override suspend fun getForecast(city: String): Flow<Forecast> {
         return flow {
             emit(
-                forecastEntityToDomainMapper.mapToDomainList(
+                forecastEntityToDomainMapper.mapToDomain(
                     apiService.getWeatherForecast(
                         city,
                         MiscUtils.COUNT,

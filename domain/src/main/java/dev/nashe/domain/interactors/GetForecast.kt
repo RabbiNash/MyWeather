@@ -10,9 +10,9 @@ import javax.inject.Inject
 
 class GetForecast @Inject constructor(
     private val weatherRepository: WeatherRepository
-) : FlowUseCase<List<Forecast>, String>() {
+) : FlowUseCase<Forecast, String>() {
 
-    override suspend fun invoke(params: String?): Flow<List<Forecast>> {
+    override suspend fun invoke(params: String?): Flow<Forecast> {
         if (params == null) throw IllegalArgumentException("Search parameter cannot be null")
         return weatherRepository.getForecast(params).flowOn(Dispatchers.IO)
     }

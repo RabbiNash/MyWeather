@@ -10,5 +10,5 @@ interface ApiService {
         @Query("cnt") count: Int,
         @Query("appid") appid: String,
         @Query("units") units: String
-    ): List<ForecastEntity>
+    ): ForecastEntity
 }

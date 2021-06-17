@@ -13,6 +13,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.IllegalArgumentException
 
 @RunWith(MockitoJUnitRunner::class)
 class InteractorTest {
@@ -28,16 +29,21 @@ class InteractorTest {
         getForecast = GetForecast(weatherRepository)
     }
 
-    private suspend fun stubWeatherRepositoryGetForecast(forecast : Flow<List<Forecast>>){
+    private suspend fun stubWeatherRepositoryGetForecast(forecast : Flow<Forecast>){
         whenever(getForecast(DomainDataStub.cityName)).thenReturn(forecast)
     }
 
     @Test
     fun `check if forecast is retrieved from repository`() = runBlockingTest{
-        stubWeatherRepositoryGetForecast(flowOf(listOf(DomainDataStub.weatherForecast)))
+        stubWeatherRepositoryGetForecast(flowOf(DomainDataStub.weatherForecast))
 
         val forecast = getForecast(DomainDataStub.cityName).first()
 
-        assertThat(forecast).isEqualTo(listOf(DomainDataStub.weatherForecast))
+        assertThat(forecast).isEqualTo(DomainDataStub.weatherForecast)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `check if illegal argument exception is raised if search param is null`() = runBlockingTest {
+        getForecast().first()
     }
 }
