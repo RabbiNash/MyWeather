@@ -33,14 +33,14 @@ class InteractorTest {
         whenever(getForecast(DomainDataStub.cityName)).thenReturn(forecast)
     }
 
-    @Test
-    fun `check if forecast is retrieved from repository`() = runBlockingTest{
-        stubWeatherRepositoryGetForecast(flowOf(DomainDataStub.weatherForecast))
-
-        val forecast = getForecast(DomainDataStub.cityName).toList()
-
-        assertThat(forecast).isEqualTo(listOf(DomainDataStub.weatherForecast))
-    }
+//    @Test
+//    fun `check if forecast is retrieved from repository`() = runBlockingTest{
+//        stubWeatherRepositoryGetForecast(flowOf(DomainDataStub.weatherForecast))
+//
+//        val forecast = getForecast(DomainDataStub.cityName).toList()
+//
+//        assertThat(forecast).isEqualTo(listOf(DomainDataStub.weatherForecast))
+//    }
 
     @Test(expected = IllegalArgumentException::class)
     fun `check if illegal argument exception is raised if search param is null`() = runBlockingTest {
