@@ -71,6 +71,10 @@ dependencies {
     implementation appDependencies.navigationFragment
     implementation appDependencies.navigationUI
 
+    //glide
+    implementation appDependencies.glide
+    kapt appDependencies.glideCompiler
+
     //Dependency Injection
     implementation appDependencies.hilt
     kapt appDependencies.hiltCompiler

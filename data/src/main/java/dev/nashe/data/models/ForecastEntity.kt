@@ -1,5 +1,7 @@
 package dev.nashe.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class ForecastEntity(
-    val forecast: List<DayForecastEntity>,
+    @SerializedName("list") val forecast: List<DayForecastEntity>,
 )

@@ -2,9 +2,11 @@ package dev.nashe.data.api
 
 import dev.nashe.data.models.ForecastEntity
 import kotlinx.coroutines.flow.Flow
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+    @GET("daily")
     suspend fun getWeatherForecast(
         @Query("q") city: String,
         @Query("cnt") count: Int,

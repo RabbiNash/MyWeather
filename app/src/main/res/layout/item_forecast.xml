@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="forecast"
+            type="dev.nashe.myweather.data.models.DayForecastView" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/bg_rounded_gray">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:forecastDate="@{forecast.dt}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Friday 19 June 2019" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_weather"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="fitCenter"
+            app:iconId="@{forecast.weather[0].icon}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_date"
+            app:layout_constraintEnd_toStartOf="@+id/tv_max_temp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_date"
+            app:layout_constraintTop_toTopOf="@+id/tv_date"
+            tools:src="@drawable/ic_search" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_max_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/manrope_semibold"
+            android:textColor="@color/black"
+            android:text="@{@string/val_temp(String.valueOf(forecast.temp.max))}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_date"
+            app:layout_constraintEnd_toStartOf="@+id/tv_min_temp"
+            app:layout_constraintTop_toTopOf="@+id/tv_date"
+            tools:text="23 \u2103" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_min_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/manrope_regular"
+            android:text="@{@string/val_temp(String.valueOf(forecast.temp.min))}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_max_temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_max_temp"
+            tools:text="23 \u2103" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pressure_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/title_pressure"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/grp_divide_pres_prec"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_precipitation_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/title_precipitation"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/grp_divide_pres_prec"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_pressure_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pressure_lbl" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/grp_divide_pres_prec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.25"
+            android:orientation="vertical"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{String.valueOf(forecast.pressure)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_pressure_lbl"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide_pres_prec"
+            app:layout_constraintTop_toTopOf="@+id/tv_pressure_lbl"
+            tools:text="1009" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_precipitate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{String.valueOf(forecast.rain)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_precipitation_lbl"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide_pres_prec"
+            app:layout_constraintTop_toTopOf="@+id/tv_precipitation_lbl"
+            tools:text="7.43" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/grp_divide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_humidity_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/title_humidity"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_wind_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/title_wind"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pressure_lbl" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/grp_divide_hum_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.75"
+            android:orientation="vertical"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(forecast.humidity)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_humidity_lbl"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide_hum_wind"
+            app:layout_constraintTop_toTopOf="@+id/tv_humidity_lbl"
+            tools:text="75" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(forecast.speed)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wind_lbl"
+            app:layout_constraintStart_toStartOf="@+id/grp_divide_hum_wind"
+            app:layout_constraintTop_toTopOf="@+id/tv_wind_lbl"
+            tools:text="7.43" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

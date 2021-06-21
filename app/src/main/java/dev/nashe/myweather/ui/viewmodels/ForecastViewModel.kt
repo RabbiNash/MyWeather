@@ -30,7 +30,7 @@ class ForecastViewModel @Inject constructor(
             and confirm if the user has actually put some input
              */
             searchInput.debounce(timeoutMillis = DEBOUNCE_VAL).collect {
-                if (it.length != VALID_ID_LENGTH) {
+                if (it.length < VALID_CITY_LENGTH) {
                     _searchResults.value = Result.Idle
                 } else {
                     getForecast(it)
@@ -60,6 +60,6 @@ class ForecastViewModel @Inject constructor(
 
     companion object {
         const val DEBOUNCE_VAL = 500L
-        const val VALID_ID_LENGTH = 7
+        const val VALID_CITY_LENGTH = 2
     }
 }

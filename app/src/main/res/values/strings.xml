@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">MyWeather</string>
     <string name="title_search_city">Search City</string>
+    <string name="title_pressure">Pressure:</string>
+    <string name="title_precipitation">Precipitation:</string>
+    <string name="title_wind">Wind:</string>
+    <string name="title_humidity">Humidity:</string>
+
+    <string name="val_temp">%s \u2103</string>
+    <string name="title_16_day_forecast">16 DAY FORECAST</string>
+    <string name="title_hot">Hot</string>
+    <string name="title_cold">Cold</string>
 </resources>

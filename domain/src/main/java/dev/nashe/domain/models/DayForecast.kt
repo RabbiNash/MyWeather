@@ -7,7 +7,7 @@ data class DayForecast(
     val feelsLike: FeelsLike,
     val gust: Double,
     val humidity: Int,
-    val pop: Int,
+    val pop: Double,
     val pressure: Int,
     val rain: Double,
     val speed: Double,

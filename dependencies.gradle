@@ -157,7 +157,9 @@ ext {
             hilt                         : "com.google.dagger:hilt-android:${hiltVersion}",
             hiltCompiler                 : "com.google.dagger:hilt-android-compiler:${hiltVersion}",
             hiltViewModel                : "androidx.hilt:hilt-lifecycle-viewmodel:${hiltViewModelVersion}",
-            hiltViewModelCompiler        : "androidx.hilt:hilt-compiler:${hiltWork}"
+            hiltViewModelCompiler        : "androidx.hilt:hilt-compiler:${hiltWork}",
+            glide                        : "com.github.bumptech.glide:glide:${glide}",
+            glideCompiler                : "com.github.bumptech.glide:compiler:${glide}"
     ]
 
     appTestDependencies = [
