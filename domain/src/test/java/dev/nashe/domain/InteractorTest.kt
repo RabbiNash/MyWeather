@@ -37,9 +37,9 @@ class InteractorTest {
     fun `check if forecast is retrieved from repository`() = runBlockingTest{
         stubWeatherRepositoryGetForecast(flowOf(DomainDataStub.weatherForecast))
 
-        val forecast = getForecast(DomainDataStub.cityName).first()
+        val forecast = getForecast(DomainDataStub.cityName).toList()
 
-        assertThat(forecast).isEqualTo(DomainDataStub.weatherForecast)
+        assertThat(forecast).isEqualTo(listOf(DomainDataStub.weatherForecast))
     }
 
     @Test(expected = IllegalArgumentException::class)
