@@ -10,4 +10,6 @@
     <string name="title_16_day_forecast">16 DAY FORECAST</string>
     <string name="title_hot">Hot</string>
     <string name="title_cold">Cold</string>
+    <string name="title_max">Max</string>
+    <string name="title_min">Min</string>
 </resources>
