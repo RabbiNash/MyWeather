@@ -80,6 +80,7 @@ Room caching could be a good idea, i will add it as soon as i get the time.
 * [Dagger Hilt](https://dagger.dev/hilt/) - For dependency injection
 * [Truth](https://truth.dev/) - For assertions during testing
 * Jetpack Libraries
+* Roboelectric - To enable me to run android tests on the JVM. This potentially reduces testing time
 
 
 ## Screenshots
