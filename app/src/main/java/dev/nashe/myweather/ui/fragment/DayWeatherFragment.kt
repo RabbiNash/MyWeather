@@ -24,9 +24,13 @@ class DayWeatherFragment : BaseFragment<FragmentDayWeatherBinding>() {
             topAppBar.setNavigationOnClickListener { activity?.onBackPressed() }
 
             //check if day temperature is high or not
-            tvTempStatus.text = if(args.dayForecast.temp.day > 25){
+            tvTempStatus.text = if(args.dayForecast.temp.day > TEMP_THRESHOLD){
                 getString(R.string.title_hot)
             } else getString(R.string.title_cold)
         }
+    }
+
+    companion object {
+        const val TEMP_THRESHOLD = 25
     }
 }

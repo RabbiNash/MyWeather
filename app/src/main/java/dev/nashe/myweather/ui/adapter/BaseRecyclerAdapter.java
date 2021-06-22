@@ -62,6 +62,11 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseViewHolder> extends 
         notifyDataSetChanged();
     }
 
+    public void clearItems(){
+        items.clear();
+        notifyDataSetChanged();
+    }
+
     public void addItem(T item) {
         items.add(item);
         notifyItemInserted(getItemCount() - 1);

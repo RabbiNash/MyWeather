@@ -60,6 +60,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_search" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/manrope_light"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+            tools:text="Not found" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_forecast"

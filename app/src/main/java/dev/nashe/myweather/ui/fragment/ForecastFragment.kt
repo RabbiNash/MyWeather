@@ -10,6 +10,7 @@ import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import dev.nashe.domain.models.DayForecast
 import dev.nashe.myweather.R
 import dev.nashe.myweather.data.models.DayForecastView
 import dev.nashe.myweather.databinding.FragmentForecastBinding
@@ -35,6 +36,7 @@ class ForecastFragment : BaseFragment<FragmentForecastBinding>(), BaseRecyclerAd
 
         override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
             forecastViewModel.performSearch(text.toString())
+            selectedCity = binding?.etSearch?.text.toString()
         }
 
         override fun afterTextChanged(p0: Editable?) {}
@@ -55,11 +57,14 @@ class ForecastFragment : BaseFragment<FragmentForecastBinding>(), BaseRecyclerAd
                 is Result.Success -> {
                     forecastAdapter.setItems(it.data.forecast)
                     toggleLoading(false)
+                    setCityView(selectedCity)
                 }
                 is Result.Error -> {
-                    Toast.makeText(context, "An error occured ${it.message}", Toast.LENGTH_LONG).show()
                     Timber.d(it.message)
                     toggleLoading(false)
+                    //for additional information you display the error message
+                    setCityView("City Not found")
+                    forecastAdapter.clearItems()
                 }
                 is Result.Idle -> {
                     toggleLoading(false)
@@ -69,6 +74,13 @@ class ForecastFragment : BaseFragment<FragmentForecastBinding>(), BaseRecyclerAd
                 }
             }
         })
+    }
+
+    private fun setCityView(city : String?){
+        binding?.apply {
+            tvCity.visibility = View.VISIBLE
+            tvCity.text = city
+        }
     }
 
     private fun toggleLoading(isLoadingState : Boolean){
@@ -99,11 +111,16 @@ class ForecastFragment : BaseFragment<FragmentForecastBinding>(), BaseRecyclerAd
         super.onResume()
 
         toggleLoading(false)
+        binding?.tvCity?.visibility = View.GONE
     }
 
     override fun onItemSelected(t: DayForecastView) {
         val inputCity = binding?.etSearch?.text.toString()
         if (inputCity.isNotEmpty()) selectedCity = inputCity
         navigate(ForecastFragmentDirections.actionForecastFragmentToDayWeatherFragment(t, selectedCity))
+    }
+
+    companion object {
+        val EMPTY_LIST = listOf<DayForecastView>()
     }
 }
