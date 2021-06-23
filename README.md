@@ -93,3 +93,10 @@ From a standard device - `Galaxy Note 9`
 With the help of wakatime, this project took approximately 12 hours over a span of 14 days.
 
 <img src="http://nashe.dev/wp-content/uploads/2021/06/wakatime.png" width="250px"/> 
+
+## Side note
+
+I didn't implement offline caching because of the additional feature of search as you type that was implemented.
+Using this specific implementation in an offline setup would have required me to download as much data as i can,
+so that when there is no connection the user can always retrieve the forecast from the local db.
+
