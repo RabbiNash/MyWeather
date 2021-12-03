@@ -87,12 +87,12 @@ Room caching could be a good idea, i will add it as soon as i get the time.
 
 From a standard device - `Galaxy Note 9`
  
-<img src="http://nashe.dev/wp-content/uploads/2021/06/Screenshot_1624283305.png" width="250px"/> <img src="http://nashe.dev/wp-content/uploads/2021/06/Screenshot_1624283375.png" width="250px"/>
+<img src="https://nashe.dev/wp-content/uploads/2021/06/Screenshot_1624283305.png" width="250px"/> <img src="https://nashe.dev/wp-content/uploads/2021/06/Screenshot_1624283375.png" width="250px"/>
 
 ## Time Taken
 With the help of wakatime, this project took approximately 12 hours over a span of 14 days.
 
-<img src="http://nashe.dev/wp-content/uploads/2021/06/wakatime.png" width="250px"/> 
+<img src="https://nashe.dev/wp-content/uploads/2021/06/wakatime.png" width="250px"/> 
 
 ## Side note
 
